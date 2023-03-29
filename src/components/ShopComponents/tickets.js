@@ -77,7 +77,7 @@ const allTickets = {
     }
 }
 
-const Tickets = () => {
+const Tickets = (props) => {
     return (
         <div>
             <Link style={navStyle} to='/shop'>

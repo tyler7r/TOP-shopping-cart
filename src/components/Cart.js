@@ -1,4 +1,4 @@
-const Cart = () => {
+const Cart = (props) => {
     return (
         <div>
             Displayed Cart
