@@ -1,0 +1,28 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(85, 1, 85);
+    color: white;
+    padding: 4px 24px 4px 24px;
+}
+
+#logo {
+    height: 10vh;
+}
+
+.nav-links {
+    padding: 4px 0px 4px 0px;
+    border: 1px solid white;
+    min-width: 40%;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-around;
+}
