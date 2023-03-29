@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png'
 
-const Nav = () => {
+const Nav = (props) => {
+
     const navStyle = {
         color: 'white',
         textDecoration: 'none'
     }
+
     return (
-        <nav>
+        <nav id='main-nav'>
             <img id='logo' alt='logo' src={logo}/>
             <ul className="nav-links">
                 <Link style={navStyle} to='/'>
@@ -18,7 +20,7 @@ const Nav = () => {
                     <li>Shop</li>
                 </Link>
                 <Link style={navStyle} to='/cart'>
-                    <li>Cart</li>
+                    <li>Cart: {props.cart.length}</li>
                 </Link>
             </ul>
         </nav>
