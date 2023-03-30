@@ -109,11 +109,13 @@ const IndividualTickets = () => {
     individual();
 
     return (
-        tickets.map(ticket => {
-            return (
-                <div key={ticket.id}>{ticket.opponent}</div>
-            )
-        })
+        <div className='individualTickets'>
+            {tickets.map(ticket => {
+                return (
+                    <div className='individualTicket' key={ticket.id}>{ticket.opponent}</div>
+                )
+            })}
+        </div>
     )
 }
 
@@ -131,11 +133,13 @@ const SeasonTickets = () => {
     season();
 
     return (
-        tickets.map(ticket => {
+        <div className='seasonTickets'>
+            {tickets.map(ticket => {
             return (
-                <div key={ticket.id}>{ticket.name}</div>
+                <div className='seasonTicket' key={ticket.id}>{ticket.name}</div>
             )
-        })
+            })}
+        </div>
     )
 }
 

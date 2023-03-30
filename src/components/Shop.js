@@ -7,20 +7,19 @@ const navStyle = {
 }
 
 const Shop = (props) => {
-
     return (
-        <div>
-            <div className='shop-nav'>
-                <ul>
-                    <Link style={navStyle} to='/tickets'>
-                        <li>Tickets</li>
-                    </Link>
-                    <Link style={navStyle} to='/gear'>
-                        <li>Gear</li>
-                    </Link>
-                </ul>
+            <div>
+                <div className='shop-nav'>
+                    <ul>
+                        <Link style={navStyle} to='/tickets'>
+                            <li>Tickets</li>
+                        </Link>
+                        <Link style={navStyle} to='/gear'>
+                            <li>Gear</li>
+                        </Link>
+                    </ul>
+                </div>
             </div>
-        </div>
     )
 }
 
