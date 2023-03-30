@@ -76,9 +76,9 @@ const Gear = (props) => {
             <Link style={navStyle} to='/shop'>
                 <div>Back to Shop</div>
             </Link>
-            <Jerseys />
-            <Apparel />
-            <Discs />
+            <Jerseys addItem={props.addItem}/>
+            <Apparel addItem={props.addItem}/>
+            <Discs addItem={props.addItem}/>
         </div>
     )
 }
@@ -99,7 +99,10 @@ const Jerseys = (props) => {
             <h2>Replica Jerseys</h2>
             {jerseys.map(jersey => {
                 return (
-                    <div className='jersey' key={jersey.name}>{jersey.name}</div>
+                    <div className='shopItem'>
+                        <div className='jersey' key={jersey.name}>{jersey.name}</div>
+                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    </div>
                 )
             })}
         </div>
@@ -129,7 +132,10 @@ const Apparel = (props) => {
             <h2>Apparel</h2>
             {apparel.map(item => {
                 return (
-                    <div key={item.name} className='apparel'>{item.name}</div>
+                    <div className='shopItem'>
+                        <div key={item.name} className='apparel'>{item.name}</div>
+                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    </div>
                 )
             })}
         </div>
@@ -152,7 +158,10 @@ const Discs = (props) => {
             <h2>Discs</h2>
             {discs.map(disc => {
                 return (
-                    <div className='disc' key={disc.name}>{disc.name}</div>
+                    <div className='shopItem'>
+                        <div className='disc' key={disc.name}>{disc.name}</div>
+                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    </div>
                 )
             })}
         </div>

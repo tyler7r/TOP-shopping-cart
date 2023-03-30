@@ -1,8 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import Shop from './components/Shop';
-import Nav from './components/Nav';
-import { MemoryRouter, BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
 describe('Nav renders correctly', () => {
