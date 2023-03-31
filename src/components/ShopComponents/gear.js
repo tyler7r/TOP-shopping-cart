@@ -99,9 +99,9 @@ const Jerseys = (props) => {
             <h2>Replica Jerseys</h2>
             {jerseys.map(jersey => {
                 return (
-                    <div className='shopItem'>
-                        <div className='jersey' key={jersey.name}>{jersey.name}</div>
-                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    <div key={jersey.name} className='shopItem'>
+                        <div className='jersey'>{jersey.name}</div>
+                        <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
             })}
@@ -132,9 +132,9 @@ const Apparel = (props) => {
             <h2>Apparel</h2>
             {apparel.map(item => {
                 return (
-                    <div className='shopItem'>
-                        <div key={item.name} className='apparel'>{item.name}</div>
-                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    <div key={item.name} className='shopItem'>
+                        <div className='apparel'>{item.name}</div>
+                        <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
             })}
@@ -158,9 +158,9 @@ const Discs = (props) => {
             <h2>Discs</h2>
             {discs.map(disc => {
                 return (
-                    <div className='shopItem'>
-                        <div className='disc' key={disc.name}>{disc.name}</div>
-                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    <div key={disc.name} className='shopItem'>
+                        <div className='disc'>{disc.name}</div>
+                        <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
             })}

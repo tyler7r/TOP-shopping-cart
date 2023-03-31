@@ -10,16 +10,23 @@ import Gear from './components/ShopComponents/gear'
 
 const App = () => {
     const [cart, setCart] = useState([]);
+
+    const addItem = (item) => {
+        console.log(cart);
+        let updatedCart = [...cart, item];
+        setCart(updatedCart);
+    }
+
     return (
         <BrowserRouter>
             <div className='App'>
                 <Nav cart={cart} />
                 <Routes>
-                    <Route path='/' element={<Home addItem={setCart} />} />
-                    <Route path='/shop' element={<Shop addItem={setCart}/>} />
-                    <Route path='/cart' element={<Cart cart={cart} addItem={setCart}/>} />
-                    <Route path='/tickets' element={<Tickets addItem={setCart}/>} />
-                    <Route path='/gear' element={<Gear addItem={setCart}/>} />
+                    <Route path='/' element={<Home addItem={addItem} />} />
+                    <Route path='/shop' element={<Shop addItem={addItem}/>} />
+                    <Route path='/cart' element={<Cart cart={cart} addItem={addItem}/>} />
+                    <Route path='/tickets' element={<Tickets addItem={addItem}/>} />
+                    <Route path='/gear' element={<Gear addItem={addItem}/>} />
                 </Routes>
             </div>
         </BrowserRouter>

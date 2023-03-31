@@ -112,9 +112,9 @@ const IndividualTickets = (props) => {
         <div className='individualTickets'>
             {tickets.map(ticket => {
                 return (
-                    <div className='shopItem'>
-                        <div className='individualTicket' key={ticket.id}>{ticket.opponent}</div>
-                        <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                    <div key={ticket.id} className='shopItem'>
+                        <div className='individualTicket'>{ticket.opponent}</div>
+                        <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
             })}
@@ -139,9 +139,9 @@ const SeasonTickets = (props) => {
         <div className='seasonTickets'>
             {tickets.map(ticket => {
             return (
-                <div className='shopItem'>
-                    <div className='seasonTicket' key={ticket.id}>{ticket.name}</div>
-                    <button onClick={props.addItem} className='addToCart'>Add to Cart</button>
+                <div key={ticket.id} className='shopItem'>
+                    <div className='seasonTicket'>{ticket.name}</div>
+                    <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                 </div>
             )
             })}

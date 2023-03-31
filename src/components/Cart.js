@@ -1,9 +1,14 @@
 const Cart = (props) => {
-    return (
-        <div>
-            Displayed Cart
-        </div>
-    )
+    console.log(props.cart);
+    // return (
+    //     <div>
+    //         {props.cart.map(item => {
+    //             return (
+    //                 <div key={item.name}className='cartItem'>{item}</div>
+    //             )
+    //         })}
+    //     </div>
+    // )
 }
 
 export default Cart;
