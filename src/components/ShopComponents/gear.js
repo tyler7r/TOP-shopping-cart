@@ -9,6 +9,8 @@ const allGear = {
             color: 'purple',
             price: 60,
             number: '',
+            size: '',
+            quantity: 0,
             fees: 0,
             id: 'homekit',
         },
@@ -17,6 +19,8 @@ const allGear = {
             color: 'white',
             price: 60,
             number: '',
+            size: '',
+            quantity: 0,
             fees: 0,
             id: 'awaykit'
         }
@@ -25,40 +29,51 @@ const allGear = {
         sunhoodie: {
             name: 'ATL Hustle Purple Sun Hoodie',
             color: 'purple',
+            size: '',
             price: 50,
             saleprice: 39,
+            quantity: 0,
             id: 'sunhoodie',
         },
         tshirts: {
             purple: {
                 name: 'ATL Hustle Purple T-Shirt',
                 color: 'purple',
+                size: '',
                 price: 20,
+                quantity: 0,
                 id: 'purplet'
             },
             black: {
                 name: 'ATL Hustle Black T-Shirt',
                 color: 'black',
+                size: '',
                 price: 20,
+                quantity: 0,
                 id: 'blackt',
             },
             gray: {
                 name: 'ATL Hustle Gray T-Shirt',
                 color: 'gray',
+                size: '',
                 price: 20,
+                quantity: 0,
                 id: 'grayt',
             }
         },
         polo: {
             name: 'ATL Hustle Polo',
             color: 'black',
+            size: '',
             price: 30,
+            quantity: 0,
             id: 'polo',
         },
         hat: {
             name: 'ATL Hustle 5 Panel Hat',
             color: 'black',
             price: 25,
+            quantity: 0,
             id: 'hat'
         }
     },
@@ -66,16 +81,19 @@ const allGear = {
         game: {
             name: 'ATL Hustle Game Disc',
             price: 15,
+            quantity: 0,
             id: 'gamedisc'
         },
         futures: {
             name: 'Hustle Futures Disc',
             price: 15,
+            quantity: 0,
             id: 'futuresdisc'
         },
         peach: {
             name: 'ATL Hustle Peach Disc',
             price: 15,
+            quantity: 0,
             id: 'peachdisc',
         }
     }
@@ -87,9 +105,23 @@ const Gear = (props) => {
             <Link style={navStyle} to='/shop'>
                 <div>Back to Shop</div>
             </Link>
-            <Jerseys addItem={props.addItem}/>
-            <Apparel addItem={props.addItem}/>
-            <Discs addItem={props.addItem}/>
+            <Jerseys increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+            <Apparel increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+            <Discs increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+        </div>
+    )
+}
+
+const Size = (props) => {
+    const sizeSelect = (e) => {
+        props.item.size = e.target.textContent;
+    }
+    if (props.item.name === 'ATL Hustle 5 Panel Hat') return
+    return (
+        <div className='sizeSelector'>
+            <button onClick={(e) => {sizeSelect(e)}} className='Small sizeBtn'>S</button>
+            <button onClick={(e) => {sizeSelect(e)}} className='Medium sizeBtn'>M</button>
+            <button onClick={(e) => {sizeSelect(e)}} className='Large sizeBtn'>L</button>
         </div>
     )
 }
@@ -112,6 +144,12 @@ const Jerseys = (props) => {
                 return (
                     <div key={jersey.id} className='shopItem'>
                         <div className='jersey'>{jersey.name}</div>
+                        <Size item={jersey}/>
+                        <div className='quantity'>
+                            <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
+                            <input type='text' placeholder="Quantity" id={jersey.id} name={jersey.id} />
+                            <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
+                        </div>
                         <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
@@ -145,6 +183,12 @@ const Apparel = (props) => {
                 return (
                     <div key={item.id} className='shopItem'>
                         <div className='apparel'>{item.name}</div>
+                        <Size item={item} />
+                        <div className='quantity'>
+                            <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
+                            <input type='text' placeholder="Quantity" id={item.id} name={item.id} />
+                            <button onClick={() => {props.increment(item)}} className='increment'>+</button>
+                        </div>
                         <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
@@ -171,6 +215,11 @@ const Discs = (props) => {
                 return (
                     <div key={disc.id} className='shopItem'>
                         <div className='disc'>{disc.name}</div>
+                        <div className='quantity'>
+                            <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
+                            <input type='text' placeholder="Quantity" id={disc.id} name={disc.id} />
+                            <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
+                        </div>
                         <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )

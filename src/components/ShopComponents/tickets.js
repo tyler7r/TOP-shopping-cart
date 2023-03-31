@@ -100,11 +100,11 @@ const Tickets = (props) => {
             </Link>
             <div>
                 <h1>Individual Tickets</h1>
-                <IndividualTickets handleChange={props.handleChange} increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+                <IndividualTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
             <div>
                 <h1>Season Tickets</h1>
-                <SeasonTickets handleChange={props.handleChange} increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+                <SeasonTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
         </div>
     )
@@ -161,6 +161,11 @@ const SeasonTickets = (props) => {
             return (
                 <div key={ticket.id} className='shopItem'>
                     <div className='seasonTicket'>{ticket.name}</div>
+                    <div className='quantity'>
+                        <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
+                        <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
+                        <button onClick={() => {props.increment(ticket)}} className='increment'>+</button>
+                    </div>
                     <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                 </div>
             )

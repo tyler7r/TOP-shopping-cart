@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import './App.css'
 import Nav from './components/Nav';
@@ -10,32 +10,19 @@ import Gear from './components/ShopComponents/Gear';
 
 const App = () => {
     const [cart, setCart] = useState([]);
-    const [quantity, setQuantity] = useState(0);
 
     const addItem = (item) => {
+        let itemCopy = {...item};
         const input = document.querySelector(`#${item.id}`);
-        if (isNaN(parseInt(input.value)) === true) return;
-        let find = cart.find((obj) => obj.id === item.id);
-        if (find !== undefined) {
-            item.quantity += parseInt(input.value);
-            let copy = [...cart];
-            setCart(copy);
-        } else {
-            item.quantity += parseInt(input.value);
-            let copy = [...cart, item];
-            setCart(copy);
+        let copy = [...cart];
+        for (let i = 0; i < parseInt(input.value); i++) {
+            copy.push(itemCopy);
         }
+        setCart(copy);
+        input.value = '';
+        item.size = '';
+        console.log(cart);
     }
-
-    useEffect(() => {
-        const cartQuantity = () => {
-            let copy = [...cart]
-            const num = copy.reduce((total, currentItem) => total + currentItem.quantity, 0);
-            setQuantity(num);
-        }
-
-        cartQuantity();
-    }, [cart])
 
     const increment = (item) => {
         const input = document.querySelector(`#${item.id}`);
@@ -48,14 +35,10 @@ const App = () => {
         input.value--;
     }
 
-    // const handleChange = (item) => {
-        
-    // }
-
     return (
         <BrowserRouter>
             <div className='App'>
-                <Nav cart={cart} quantity={quantity} />
+                <Nav cart={cart} />
                 <Routes>
                     <Route path='/' element={<Home addItem={addItem} />} />
                     <Route path='/shop' element={<Shop addItem={addItem}/>} />

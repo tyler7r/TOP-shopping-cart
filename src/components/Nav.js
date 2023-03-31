@@ -19,7 +19,7 @@ const Nav = (props) => {
                     <li>Shop</li>
                 </Link>
                 <Link style={navStyle} to='/cart'>
-                    <li>Cart: {props.quantity}</li>
+                    <li>Cart: {props.cart.length}</li>
                 </Link>
             </ul>
         </nav>
