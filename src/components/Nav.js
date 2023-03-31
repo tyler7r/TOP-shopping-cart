@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo.png'
 
 const Nav = (props) => {
-
     const navStyle = {
         color: 'white',
         textDecoration: 'none'
@@ -20,7 +19,7 @@ const Nav = (props) => {
                     <li>Shop</li>
                 </Link>
                 <Link style={navStyle} to='/cart'>
-                    <li>Cart: {props.cart.length}</li>
+                    <li>Cart: {props.quantity}</li>
                 </Link>
             </ul>
         </nav>

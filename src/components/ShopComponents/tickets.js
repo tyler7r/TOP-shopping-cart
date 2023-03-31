@@ -8,6 +8,7 @@ const allTickets = {
         type: 'Individual',
         date: '04/29/2023',
         price: 10,
+        quantity: 0,
         id: 'indy429',
     },
     car505: {
@@ -15,12 +16,14 @@ const allTickets = {
         type: 'Individual',
         date: '05/05/2023',
         price: 15,
+        quantity: 0,
         id: 'car505'
     },
     aus512: {
         name: 'Austin Sol',
         type: 'Individual',
         date: '05/12/2023',
+        quantity: 0,
         price: 15,
         id: 'aus512'
     },
@@ -28,6 +31,7 @@ const allTickets = {
         name: 'Houston Havoc',
         type: 'Individual',
         date: '05/27/22',
+        quantity: 0,
         price: 10,
         id: 'hou527'
     },
@@ -36,6 +40,7 @@ const allTickets = {
         date: '06/17/2023',
         type: 'Individual',
         price: 10,
+        quantity: 0,
         id: 'dal617',
     },
     car722: {
@@ -43,12 +48,14 @@ const allTickets = {
         type: 'Individual',
         date: '07/22/2023',
         price: 15,
+        quantity: 0,
         id: 'car722',
     },
     ambassador: {
         name: '2023 Ambassador Pass',
         type: 'Season',
         price: 130,
+        quantity: 0,
         id: 'ambassador',
         details: {
             header: 'This ticket will admit 1 person to all Hustle Home games (including Playoffs)',
@@ -61,6 +68,7 @@ const allTickets = {
         name: '2023 Family Pass',
         type: 'Season',
         price: 199,
+        quantity: 0,
         id: 'family',
         details: {
             header: 'This ticket will admit 4 people to all Hustle Home games (including Playoffs)',
@@ -73,6 +81,7 @@ const allTickets = {
         name: '2023 Buddy Pass',
         type: 'Season',
         price: 149,
+        quantity: 0,
         id: 'buddy',
         details: {
             header: 'This ticket will admit 2 people to all Hustle Home games (including Playoffs)',
@@ -91,11 +100,11 @@ const Tickets = (props) => {
             </Link>
             <div>
                 <h1>Individual Tickets</h1>
-                <IndividualTickets addItem={props.addItem}/>
+                <IndividualTickets handleChange={props.handleChange} increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
             <div>
                 <h1>Season Tickets</h1>
-                <SeasonTickets addItem={props.addItem}/>
+                <SeasonTickets handleChange={props.handleChange} increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
         </div>
     )
@@ -120,6 +129,11 @@ const IndividualTickets = (props) => {
                 return (
                     <div key={ticket.id} className='shopItem'>
                         <div className='individualTicket'>{ticket.name}</div>
+                        <div className='quantity'>
+                            <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
+                            <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
+                            <button onClick={() => {props.increment(ticket)}} className='increment'>+</button>
+                        </div>
                         <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
