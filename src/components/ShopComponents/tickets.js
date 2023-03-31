@@ -4,38 +4,44 @@ import { navStyle } from "../Shop"
 
 const allTickets = {
     indy429: {
-        opponent: 'Indianopolis Alley Cats',
+        name: 'Indianopolis Alley Cats',
         type: 'Individual',
+        date: '04/29/2023',
         price: 10,
         id: 'indy429',
     },
     car505: {
-        opponent: 'Carolina Flyers',
+        name: 'Carolina Flyers',
         type: 'Individual',
+        date: '05/05/2023',
         price: 15,
         id: 'car505'
     },
     aus512: {
-        opponent: 'Austin Sol',
+        name: 'Austin Sol',
         type: 'Individual',
+        date: '05/12/2023',
         price: 15,
         id: 'aus512'
     },
     hou527: {
-        opponent: 'Houston Havoc',
+        name: 'Houston Havoc',
         type: 'Individual',
+        date: '05/27/22',
         price: 10,
         id: 'hou527'
     },
     dal617: {
-        opponent: 'Dallas Legion',
+        name: 'Dallas Legion',
+        date: '06/17/2023',
         type: 'Individual',
         price: 10,
         id: 'dal617',
     },
     car722: {
-        opponent: 'Carolina Flyers',
+        name: 'Carolina Flyers',
         type: 'Individual',
+        date: '07/22/2023',
         price: 15,
         id: 'car722',
     },
@@ -113,7 +119,7 @@ const IndividualTickets = (props) => {
             {tickets.map(ticket => {
                 return (
                     <div key={ticket.id} className='shopItem'>
-                        <div className='individualTicket'>{ticket.opponent}</div>
+                        <div className='individualTicket'>{ticket.name}</div>
                         <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )

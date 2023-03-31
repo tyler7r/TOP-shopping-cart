@@ -10,6 +10,7 @@ const allGear = {
             price: 60,
             number: '',
             fees: 0,
+            id: 'homekit',
         },
         away: {
             name: '2023 Away Kit',
@@ -17,6 +18,7 @@ const allGear = {
             price: 60,
             number: '',
             fees: 0,
+            id: 'awaykit'
         }
     },
     apparel: {
@@ -25,47 +27,56 @@ const allGear = {
             color: 'purple',
             price: 50,
             saleprice: 39,
+            id: 'sunhoodie',
         },
         tshirts: {
             purple: {
                 name: 'ATL Hustle Purple T-Shirt',
                 color: 'purple',
                 price: 20,
+                id: 'purplet'
             },
             black: {
                 name: 'ATL Hustle Black T-Shirt',
                 color: 'black',
                 price: 20,
+                id: 'blackt',
             },
             gray: {
                 name: 'ATL Hustle Gray T-Shirt',
                 color: 'gray',
                 price: 20,
+                id: 'grayt',
             }
         },
         polo: {
             name: 'ATL Hustle Polo',
             color: 'black',
             price: 30,
+            id: 'polo',
         },
         hat: {
             name: 'ATL Hustle 5 Panel Hat',
             color: 'black',
             price: 25,
+            id: 'hat'
         }
     },
     discs: {
         game: {
             name: 'ATL Hustle Game Disc',
             price: 15,
+            id: 'gamedisc'
         },
         futures: {
             name: 'Hustle Futures Disc',
             price: 15,
+            id: 'futuresdisc'
         },
         peach: {
             name: 'ATL Hustle Peach Disc',
             price: 15,
+            id: 'peachdisc',
         }
     }
 }
@@ -99,7 +110,7 @@ const Jerseys = (props) => {
             <h2>Replica Jerseys</h2>
             {jerseys.map(jersey => {
                 return (
-                    <div key={jersey.name} className='shopItem'>
+                    <div key={jersey.id} className='shopItem'>
                         <div className='jersey'>{jersey.name}</div>
                         <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                     </div>
@@ -132,7 +143,7 @@ const Apparel = (props) => {
             <h2>Apparel</h2>
             {apparel.map(item => {
                 return (
-                    <div key={item.name} className='shopItem'>
+                    <div key={item.id} className='shopItem'>
                         <div className='apparel'>{item.name}</div>
                         <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                     </div>
@@ -158,7 +169,7 @@ const Discs = (props) => {
             <h2>Discs</h2>
             {discs.map(disc => {
                 return (
-                    <div key={disc.name} className='shopItem'>
+                    <div key={disc.id} className='shopItem'>
                         <div className='disc'>{disc.name}</div>
                         <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                     </div>
