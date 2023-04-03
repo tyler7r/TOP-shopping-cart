@@ -6,7 +6,7 @@ const allTickets = {
     indy429: {
         name: 'Indianopolis Alley Cats',
         type: 'Individual',
-        date: '04/29/2023',
+        date: 'April 29th',
         price: 10,
         quantity: 0,
         id: 'indy429',
@@ -14,7 +14,7 @@ const allTickets = {
     car505: {
         name: 'Carolina Flyers',
         type: 'Individual',
-        date: '05/05/2023',
+        date: 'May 5th',
         price: 15,
         quantity: 0,
         id: 'car505'
@@ -22,7 +22,7 @@ const allTickets = {
     aus512: {
         name: 'Austin Sol',
         type: 'Individual',
-        date: '05/12/2023',
+        date: 'May 12th',
         quantity: 0,
         price: 15,
         id: 'aus512'
@@ -30,14 +30,14 @@ const allTickets = {
     hou527: {
         name: 'Houston Havoc',
         type: 'Individual',
-        date: '05/27/22',
+        date: 'May 27th',
         quantity: 0,
         price: 10,
         id: 'hou527'
     },
     dal617: {
         name: 'Dallas Legion',
-        date: '06/17/2023',
+        date: 'June 17th',
         type: 'Individual',
         price: 10,
         quantity: 0,
@@ -46,7 +46,7 @@ const allTickets = {
     car722: {
         name: 'Carolina Flyers',
         type: 'Individual',
-        date: '07/22/2023',
+        date: 'July 22nd',
         price: 15,
         quantity: 0,
         id: 'car722',
@@ -98,12 +98,12 @@ const Tickets = (props) => {
             <Link style={navStyle} to='/shop'>
                     <div>Back to Shop</div>
             </Link>
-            <div>
-                <h1>Individual Tickets</h1>
+            <div id='individualTickets'>
+                <h1 className='sectionTitle'>Individual Tickets</h1>
                 <IndividualTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
-            <div>
-                <h1>Season Tickets</h1>
+            <div id='seasonTickets'>
+                <h1 className='sectionTitle'>Season Tickets</h1>
                 <SeasonTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
         </div>
@@ -128,7 +128,8 @@ const IndividualTickets = (props) => {
             {tickets.map(ticket => {
                 return (
                     <div key={ticket.id} className='shopItem'>
-                        <div className='individualTicket'>{ticket.name}</div>
+                        <img className='shopImg' src={require(`../../images/${ticket.id}.jpg`)} alt={ticket.id}/>
+                        <div className='individualTicket'>{ticket.date} vs. {ticket.name}</div>
                         <div className='quantity'>
                             <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
                             <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
@@ -153,6 +154,12 @@ const SeasonTickets = (props) => {
         }
     }
 
+    const showDetails = (ticket) => {
+        return (
+            <div>{ticket.details.header}</div>
+        )
+    }
+
     season();
 
     return (
@@ -160,7 +167,12 @@ const SeasonTickets = (props) => {
             {tickets.map(ticket => {
             return (
                 <div key={ticket.id} className='shopItem'>
-                    <div className='seasonTicket'>{ticket.name}</div>
+                    <img className='shopImg' src={require(`../../images/${ticket.id}.jpg`)} alt={ticket.id}/>
+                    <div className='seasonTicket'>
+                        <div>{ticket.name}</div>
+                        <div className='infoButton' onClick={() => {showDetails(ticket)}}>i</div>
+                    </div>
+
                     <div className='quantity'>
                         <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
                         <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
@@ -175,3 +187,4 @@ const SeasonTickets = (props) => {
 }
 
 export default Tickets;
+export { allTickets };

@@ -26,3 +26,110 @@
     list-style: none;
     justify-content: space-around;
 }
+
+.seasonTicket {
+    display: flex;
+    gap: 8px;
+}
+
+.infoButton{
+    border: 1px solid black;
+    border-radius: 100%;
+    padding: 0px 6px 0px 6px;
+}
+
+#individualTickets, #seasonTickets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.individualTickets, .seasonTickets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 8px;
+}
+
+.jerseySection, .discSection, .apparelSection {
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.jerseys, .discs {
+    display: flex;
+    gap: 8px;
+}
+
+.apparel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.shopItem {
+    border: 3px solid rgb(85, 1, 85);
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+}
+
+.sectionTitle {
+    -webkit-text-stroke-color:rgb(85, 1, 85);
+    -webkit-text-stroke-width: 2px;
+    font-weight: bold;
+    font-size: 36px;
+    color: black;
+}
+
+.itemName {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.shopImg {
+    height: 200px;
+    max-width: 250px;
+}
+
+.sizeSelector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 2px;
+}
+
+.sizeBtn {
+    background-color: white;
+    border: 2px solid rgb(85, 1, 85);
+    font-weight: bold;
+}
+
+.sizeBtn:hover {
+    background-color: rgb(85, 1, 85);
+    color: white;
+}
+
+.selectedSize {
+    background-color:rgb(85, 1, 85);
+    color: white;
+}
+
+.quantity {
+    display: flex;
+    gap: 4px;
+}
+
+.decrement, .increment {
+    background-color: white;
+    border: none;
+}

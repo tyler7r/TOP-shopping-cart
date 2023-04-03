@@ -41,7 +41,6 @@ const App = () => {
                 const addedValue = () => {
                     return parseInt(item.quantity) + parseInt(input.value);
                 }
-                console.log(addedValue());
                 item.quantity = addedValue();
                 let copy = [...cart];
                 setCart(copy);
@@ -58,7 +57,6 @@ const App = () => {
         let itemCopy = {...item};
         const input = document.querySelector(`#${item.id}`);
         let sizeMatch = cart.find(obj => obj.id === itemCopy.id && obj.size === itemCopy.size)
-        console.log(sizeMatch);
         if (sizeMatch !== undefined) {
             let copy = [...cart];
             let indexMatch = copy.findIndex(obj => obj.id === itemCopy.id && obj.size === itemCopy.size);
@@ -66,7 +64,6 @@ const App = () => {
             setCart(copy);
         } else {
             itemCopy.quantity += parseInt(input.value);
-            console.log()
             let copy = [...cart, itemCopy]
             setCart(copy);
         }

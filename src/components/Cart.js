@@ -3,7 +3,7 @@ import React from 'react';
 const Cart = (props) => {
 
     if (props.price === 0 || props.cart.length === 0) {
-        return <div>Your Cart is Empty</div>
+        return <div id='emptyCartMsg'>Your Cart is Empty</div>
     }
 
     return (

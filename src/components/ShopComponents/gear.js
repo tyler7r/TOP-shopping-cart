@@ -114,15 +114,17 @@ const Gear = (props) => {
 
 const Size = (props) => {
     const sizeSelect = (e) => {
+        let button = document.querySelector(`#${e.target.id}`);
+        button.classList.add('selectedSize');
         props.item.size = e.target.textContent;
-        props.item.id = `${props.item.id}${e.target.textContent}`;
     }
+
     if (props.item.name === 'ATL Hustle 5 Panel Hat') return
     return (
         <div className='sizeSelector'>
-            <button onClick={(e) => {sizeSelect(e)}} className='Small sizeBtn'>S</button>
-            <button onClick={(e) => {sizeSelect(e)}} className='Medium sizeBtn'>M</button>
-            <button onClick={(e) => {sizeSelect(e)}} className='Large sizeBtn'>L</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'S'} className='S sizeBtn'>S</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'M'} className='M sizeBtn'>M</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'L'} className='L sizeBtn'>L</button>
         </div>
     )
 }
@@ -140,21 +142,24 @@ const Jerseys = (props) => {
 
     return (
         <div className='jerseySection'>
-            <h2>Replica Jerseys</h2>
-            {jerseys.map(jersey => {
-                return (
-                    <div key={jersey.id} className='shopItem'>
-                        <div className='jersey'>{jersey.name}</div>
-                        <Size item={jersey}/>
-                        <div className='quantity'>
-                            <button onClick={() => {console.log(jersey); props.decrement(jersey)}} className='decrement'>-</button>
-                            <input type='text' placeholder="Quantity" id={jersey.id} name={jersey.id} />
-                            <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
+            <h2 className='sectionTitle'>Replica Jerseys</h2>
+            <div className='jerseys'>
+                {jerseys.map(jersey => {
+                    return (
+                        <div key={jersey.id} className='shopItem'>
+                            <img className='shopImg' src={require(`../../images/${jersey.id}.jpg`)} alt={jersey.id}/>
+                            <div className='itemName'>{jersey.name}</div>
+                            <Size item={jersey}/>
+                            <div className='quantity'>
+                                <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
+                                <input type='text' placeholder="Quantity" id={jersey.id} name={jersey.id} />
+                                <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
+                            </div>
+                            <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                         </div>
-                        <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
@@ -179,21 +184,24 @@ const Apparel = (props) => {
 
     return (
         <div className='apparelSection'>
-            <h2>Apparel</h2>
-            {apparel.map(item => {
-                return (
-                    <div key={item.id} className='shopItem'>
-                        <div className='apparel'>{item.name}</div>
-                        <Size item={item} />
-                        <div className='quantity'>
-                            <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
-                            <input type='text' placeholder="Quantity" id={item.id} name={item.id} />
-                            <button onClick={() => {props.increment(item)}} className='increment'>+</button>
+            <h2 className='sectionTitle'>Apparel</h2>
+            <div className='apparel'>
+                {apparel.map(item => {
+                    return (
+                        <div key={item.id} className='shopItem'>
+                            <img className='shopImg' src={require(`../../images/${item.id}.jpg`)} alt={item.id}/>
+                            <div className='itemName'>{item.name}</div>
+                            <Size item={item} />
+                            <div className='quantity'>
+                                <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
+                                <input type='text' placeholder="Quantity" id={item.id} name={item.id} />
+                                <button onClick={() => {props.increment(item)}} className='increment'>+</button>
+                            </div>
+                            <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                         </div>
-                        <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
@@ -211,22 +219,26 @@ const Discs = (props) => {
 
     return (
         <div className='discSection'>
-            <h2>Discs</h2>
-            {discs.map(disc => {
-                return (
-                    <div key={disc.id} className='shopItem'>
-                        <div className='disc'>{disc.name}</div>
-                        <div className='quantity'>
-                            <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
-                            <input type='text' placeholder="Quantity" id={disc.id} name={disc.id} />
-                            <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
+            <h2 className='sectionTitle'>Discs</h2>
+            <div className='discs'>
+                {discs.map(disc => {
+                    return (
+                        <div key={disc.id} className='shopItem'>
+                            <img className='shopImg' src={require(`../../images/${disc.id}.jpg`)} alt={disc.id}/>
+                            <div className='itemName'>{disc.name}</div>
+                            <div className='quantity'>
+                                <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
+                                <input type='text' placeholder="Quantity" id={disc.id} name={disc.id} />
+                                <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
+                            </div>
+                            <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                         </div>
-                        <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
 
-export default Gear
+export default Gear;
+export { allGear };
