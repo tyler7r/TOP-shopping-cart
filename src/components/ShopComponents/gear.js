@@ -115,6 +115,7 @@ const Gear = (props) => {
 const Size = (props) => {
     const sizeSelect = (e) => {
         props.item.size = e.target.textContent;
+        props.item.id = `${props.item.id}${e.target.textContent}`;
     }
     if (props.item.name === 'ATL Hustle 5 Panel Hat') return
     return (
@@ -146,7 +147,7 @@ const Jerseys = (props) => {
                         <div className='jersey'>{jersey.name}</div>
                         <Size item={jersey}/>
                         <div className='quantity'>
-                            <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
+                            <button onClick={() => {console.log(jersey); props.decrement(jersey)}} className='decrement'>-</button>
                             <input type='text' placeholder="Quantity" id={jersey.id} name={jersey.id} />
                             <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
                         </div>

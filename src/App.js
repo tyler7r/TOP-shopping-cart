@@ -38,7 +38,11 @@ const App = () => {
             sizeHandler(item);
         } else {
             if (find !== undefined) {
-                item.quantity += parseInt(input.value);
+                const addedValue = () => {
+                    return parseInt(item.quantity) + parseInt(input.value);
+                }
+                console.log(addedValue());
+                item.quantity = addedValue();
                 let copy = [...cart];
                 setCart(copy);
             } else {
@@ -48,7 +52,6 @@ const App = () => {
             }
         }
         input.value = '';
-        console.log(cart);
     }
 
     const sizeHandler = (item) => {
@@ -61,7 +64,6 @@ const App = () => {
             let indexMatch = copy.findIndex(obj => obj.id === itemCopy.id && obj.size === itemCopy.size);
             copy[indexMatch].quantity += parseInt(input.value);
             setCart(copy);
-
         } else {
             itemCopy.quantity += parseInt(input.value);
             console.log()
@@ -70,18 +72,46 @@ const App = () => {
         }
         item.size = '';
         input.value = '';
-        console.log(cart);
     }
 
-    const increment = (item) => {
+    const increment = (item, cartView = false) => {
         const input = document.querySelector(`#${item.id}`);
         input.value++;
+        if (cartView === true) {
+            let copy = [...cart];
+            item.quantity = input.value;
+            setCart(copy);
+        }
     }
 
-    const decrement = (item) => {
+    const decrement = (item, cartView = false) => {
         const input = document.querySelector(`#${item.id}`);
         if (input.value === '0') return
         input.value--;
+        if (cartView === true) {
+            if (input.value === '0') {
+                deleteItem(item);
+            } else {
+                let copy = [...cart];
+                item.quantity = input.value;
+                setCart(copy);
+            }
+        }
+    }
+
+    const deleteItem = (item) => {
+        let copy = [...cart];
+        if (item.size) {
+            let find = copy.findIndex(obj => obj.id === item.id && obj.size === item.size);
+            item.quantity = 0;
+            copy.splice(find, 1);
+            setCart(copy);  
+        } else {
+            let find = copy.findIndex(obj => obj.id === item.id);
+            item.quantity = 0;
+            copy.splice(find, 1);
+            setCart(copy);
+        }
     }
 
     return (
@@ -91,7 +121,7 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Home addItem={addItem} />} />
                     <Route path='/shop' element={<Shop addItem={addItem}/>} />
-                    <Route path='/cart' element={<Cart price={price} cart={cart} increment={increment} decrement={decrement} addItem={addItem}/>} />
+                    <Route path='/cart' element={<Cart delete={deleteItem} price={price} cart={cart} increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/tickets' element={<Tickets increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/gear' element={<Gear increment={increment} decrement={decrement} addItem={addItem}/>} />
                 </Routes>
