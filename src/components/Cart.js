@@ -7,25 +7,29 @@ const Cart = (props) => {
     }
 
     return (
-        <div>
+        <div className='content'>
             {props.cart.map(item => {
                 if (item.size) {
                     return (
                         <div key={item.id + item.size} className='cartItem'>
-                            <div>{item.name} {`(${item.size})`}: {item.quantity}</div>
-                            <button onClick={() => {props.decrement(item, true)}} className='decrement'>-</button>
-                            <input type='text' placeholder="Quantity" value={item.quantity} id={item.id}/>
-                            <button onClick={() => {props.increment(item, true)}} className='increment'>+</button>
+                            <div>{item.name} {`(${item.size})`}</div>
+                            <div className='quantity'>
+                                <button onClick={() => {props.decrement(item, true)}} className='decrement'>-</button>
+                                <div className='quantityValue' id={item.id}>{item.quantity}</div>
+                                <button onClick={() => {props.increment(item, true)}} className='increment'>+</button>
+                            </div>
                             <div className='deleteButton' onClick={() => {props.delete(item)}}>Remove</div>
                         </div>
                     )
                 } else {
                 return (
                     <div key={item.id} className='cartItem'>
-                        <div>{item.name}: {item.quantity}</div>
-                        <button onClick={() => {props.decrement(item, true)}} className='decrement'>-</button>
-                        <input type='text' placeholder="Quantity" value={item.quantity} id={item.id}/>
-                        <button onClick={() => {props.increment(item, true)}} className='increment'>+</button>
+                        <div>{item.name}</div>
+                        <div className='quantity'>
+                            <button onClick={() => {props.decrement(item, true)}} className='decrement'>-</button>
+                            <div className='quantityValue' id={item.id}>{item.quantity}</div>
+                            <button onClick={() => {props.increment(item, true)}} className='increment'>+</button>
+                        </div>
                         <div className='deleteButton' onClick={() => {props.delete(item)}}>Remove</div>
                     </div>
                 )

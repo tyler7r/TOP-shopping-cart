@@ -2,51 +2,89 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { allGear } from './ShopComponents/Gear';
 import { allTickets } from './ShopComponents/Tickets';
+import { Size } from './ShopComponents/Gear';
 
 const navStyle = {
     color: 'black',
     textDecoration: 'none'
-}
+} 
 
 const Shop = (props) => {
     return (
-            <div>
+            <div className='content'>
                 <div className='shop-nav'>
                     <ul>
                         <Link style={navStyle} to='/tickets'>
-                            <li>All Tickets</li>
+                            <li>Shop All Tickets</li>
                         </Link>
                         <Link style={navStyle} to='/gear'>
-                            <li>All Gear</li>
+                            <li>Shop All Gear</li>
                         </Link>
                     </ul>
                 </div>
                 <div className='featuredSection'>
                     <div className='featuredTickets'>
-                        <h2 id='featuredTicketsTitle'>Featured Tickets</h2>
+                        <h2 id='featuredTicketTitle'>Featured Tickets</h2>
                         <div id='nextGame'> 
-                            <h3>Next Home Game</h3>
-                            <div>{allTickets.indy429.date} vs. {allTickets.indy429.name}</div>
-                        </div> 
+                            <h3 className='featuredTicketTitle'>Next Home Game</h3>
+                            <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allTickets.indy429} />
+                        </div>
                         <div className='bigMatchups'>
-                            <h3>Big Matchups</h3>
-                            <div>{allTickets.car505.date} vs. {allTickets.car505.name}</div>
-                            <div>{allTickets.aus512.date} vs. {allTickets.aus512.name}</div>
+                            <h3 className='featuredTicketTitle'>Big Matchups</h3>
+                            <div id='bigMatchups'>
+                                <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allTickets.car505} />
+                                <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allTickets.aus512} />
+                            </div>
                         </div>
                     </div>
-                    <div className='featuredGear'>
+                    <div className='featuredGearSection'>
                         <h2 id='featuredGearTitle'>Featured Gear</h2>
-                        <div>{allGear.jerseys.home.name}: ${allGear.jerseys.home.price}</div>
-                        <div>{allGear.apparel.hat.name}: ${allGear.apparel.hat.price}</div>
-                        <div>{allGear.discs.game.name}: ${allGear.discs.game.price}</div>
-                    </div>
-                    <div className='purchaseAUDLTV'>
-                        <div>Can't Come to a Game? Watch live on AUDL.tv</div>
-                        <div id='audlTVLink'>AUDL.tv Link</div>
+                        <div className="featuredGear">
+                            <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allGear.jerseys.home} />
+                            <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allGear.apparel.hat} />
+                            <Featured addItem={props.addItem} increment={props.increment} decrement={props.decrement} item={allGear.discs.game} />
+                        </div>
                     </div>
                 </div>
             </div>
     )
+}
+
+const Featured = (props) => {
+    if (props.item.size !== undefined) {
+        return (
+            <div className='shopItem'>
+                <img className='shopImg' src={props.item.img} alt={props.item.id}/>
+                <div className='shopItemDivider'> </div>
+                <div className='itemName'>{props.item.name}</div>
+                <Size item={props.item} />
+                <div className='quantity'>
+                    <button onClick={() => {props.decrement(props.item)}} className='decrement'>-</button>
+                    <input className='quantityInput' type='text' placeholder="0" id={props.item.id} name={props.item.id} />
+                    <button onClick={() => {props.increment(props.item)}} className='increment'>+</button>
+                </div>
+                <div className='itemPrice'>${props.item.price}</div>
+                <button onClick={() => {props.addItem(props.item)}} className='addToCart'>Add to Cart</button>
+            </div>
+        )
+    } else {
+        return (
+                <div className='shopItem'>
+                    <img className='shopImg' src={props.item.img} alt={props.item.id}/>
+                    <div className='shopItemDivider'> </div>
+                    <div className='itemName'>
+                        <div>{props.item.date} vs. {props.item.name}</div>
+                    </div>
+                    <div className='quantity'>
+                        <button onClick={() => {props.decrement(props.item)}} className='decrement'>-</button>
+                        <input className='quantityInput' type='text' placeholder="0" id={props.item.id} name={props.item.id} />
+                        <button onClick={() => {props.increment(props.item)}} className='increment'>+</button>
+                    </div>
+                    <div className='itemPrice'>${props.item.price}</div>
+                    <button onClick={() => {props.addItem(props.item)}} className='addToCart'>Add to Cart</button>
+                </div>
+            )
+    }
 }
 
 export default Shop;

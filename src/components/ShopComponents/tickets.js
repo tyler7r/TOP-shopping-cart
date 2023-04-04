@@ -10,6 +10,7 @@ const allTickets = {
         price: 10,
         quantity: 0,
         id: 'indy429',
+        img: require('../../images/indy429.jpg'),
     },
     car505: {
         name: 'Carolina Flyers',
@@ -17,7 +18,8 @@ const allTickets = {
         date: 'May 5th',
         price: 15,
         quantity: 0,
-        id: 'car505'
+        id: 'car505',
+        img: require('../../images/car505.jpg'),
     },
     aus512: {
         name: 'Austin Sol',
@@ -25,7 +27,8 @@ const allTickets = {
         date: 'May 12th',
         quantity: 0,
         price: 15,
-        id: 'aus512'
+        id: 'aus512',
+        img: require('../../images/aus512.jpg'),
     },
     hou527: {
         name: 'Houston Havoc',
@@ -33,7 +36,8 @@ const allTickets = {
         date: 'May 27th',
         quantity: 0,
         price: 10,
-        id: 'hou527'
+        id: 'hou527',
+        img: require('../../images/hou527.jpg'),
     },
     dal617: {
         name: 'Dallas Legion',
@@ -42,6 +46,7 @@ const allTickets = {
         price: 10,
         quantity: 0,
         id: 'dal617',
+        img: require('../../images/dal617.jpg'),
     },
     car722: {
         name: 'Carolina Flyers',
@@ -50,6 +55,7 @@ const allTickets = {
         price: 15,
         quantity: 0,
         id: 'car722',
+        img: require('../../images/car722.jpg'),
     },
     ambassador: {
         name: '2023 Ambassador Pass',
@@ -57,6 +63,7 @@ const allTickets = {
         price: 130,
         quantity: 0,
         id: 'ambassador',
+        img: require('../../images/ambassador.jpg'),
         details: {
             header: 'This ticket will admit 1 person to all Hustle Home games (including Playoffs)',
             vouchers: '4 Guest Tickets',
@@ -70,6 +77,7 @@ const allTickets = {
         price: 199,
         quantity: 0,
         id: 'family',
+        img: require('../../images/family.jpg'),
         details: {
             header: 'This ticket will admit 4 people to all Hustle Home games (including Playoffs)',
             vouchers: 'Two free King of Pops per game',
@@ -83,6 +91,7 @@ const allTickets = {
         price: 149,
         quantity: 0,
         id: 'buddy',
+        img: require('../../images/buddy.jpg'),
         details: {
             header: 'This ticket will admit 2 people to all Hustle Home games (including Playoffs)',
             vouchers: 'none',
@@ -94,17 +103,21 @@ const allTickets = {
 
 const Tickets = (props) => {
     return (
-        <div>
+        <div className='content'>
             <Link style={navStyle} to='/shop'>
-                    <div>Back to Shop</div>
+                    <div className='backToShop'>Back to Shop</div>
             </Link>
             <div id='individualTickets'>
                 <h1 className='sectionTitle'>Individual Tickets</h1>
                 <IndividualTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             </div>
             <div id='seasonTickets'>
-                <h1 className='sectionTitle'>Season Tickets</h1>
+                <h1 className='sectionTitle lightPurple'>Season Tickets</h1>
                 <SeasonTickets increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
+            </div>
+            <div className='purchaseAUDLTV'>
+                <div>Can't Come to a Game? Watch live on AUDL.tv</div>
+                <div id='audlTVLink'>AUDL.tv Link</div>
             </div>
         </div>
     )
@@ -128,13 +141,15 @@ const IndividualTickets = (props) => {
             {tickets.map(ticket => {
                 return (
                     <div key={ticket.id} className='shopItem'>
-                        <img className='shopImg' src={require(`../../images/${ticket.id}.jpg`)} alt={ticket.id}/>
-                        <div className='individualTicket'>{ticket.date} vs. {ticket.name}</div>
+                        <img className='shopImg' src={ticket.img} alt={ticket.id}/>
+                        <div className='shopItemDivider'> </div>
+                        <div className='itemName'>{ticket.date} | {ticket.name}</div>
                         <div className='quantity'>
                             <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
-                            <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
+                            <input className='quantityInput' type='text' placeholder="0" id={ticket.id} name={ticket.id} />
                             <button onClick={() => {props.increment(ticket)}} className='increment'>+</button>
                         </div>
+                        <div className='itemPrice'>${ticket.price}</div>
                         <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
                     </div>
                 )
@@ -167,18 +182,19 @@ const SeasonTickets = (props) => {
             {tickets.map(ticket => {
             return (
                 <div key={ticket.id} className='shopItem'>
-                    <img className='shopImg' src={require(`../../images/${ticket.id}.jpg`)} alt={ticket.id}/>
-                    <div className='seasonTicket'>
+                    <img className='shopImg lightPurple' src={ticket.img} alt={ticket.id}/>
+                    <div className='shopItemDivider'> </div>
+                    <div className='itemName'>
                         <div>{ticket.name}</div>
                         <div className='infoButton' onClick={() => {showDetails(ticket)}}>i</div>
                     </div>
-
                     <div className='quantity'>
                         <button onClick={() => {props.decrement(ticket)}} className='decrement'>-</button>
-                        <input type='text' placeholder="Quantity" id={ticket.id} name={ticket.id} />
+                        <input className='quantityInput lightPurple' type='text' placeholder="0" id={ticket.id} name={ticket.id} />
                         <button onClick={() => {props.increment(ticket)}} className='increment'>+</button>
                     </div>
-                    <button onClick={() => {props.addItem(ticket)}} className='addToCart'>Add to Cart</button>
+                    <div className='itemPrice lightPurple'>${ticket.price}</div>
+                    <button onClick={() => {props.addItem(ticket)}} className='addToCart lightPurple'>Add to Cart</button>
                 </div>
             )
             })}

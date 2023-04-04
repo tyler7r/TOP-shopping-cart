@@ -13,6 +13,7 @@ const allGear = {
             quantity: 0,
             fees: 0,
             id: 'homekit',
+            img: require('../../images/homekit.jpg'),
         },
         away: {
             name: '2023 Away Kit',
@@ -22,7 +23,8 @@ const allGear = {
             size: '',
             quantity: 0,
             fees: 0,
-            id: 'awaykit'
+            id: 'awaykit',
+            img: require('../../images/awaykit.jpg'),
         }
     },
     apparel: {
@@ -34,6 +36,7 @@ const allGear = {
             saleprice: 39,
             quantity: 0,
             id: 'sunhoodie',
+            img: require('../../images/sunhoodie.jpg'),
         },
         tshirts: {
             purple: {
@@ -42,7 +45,8 @@ const allGear = {
                 size: '',
                 price: 20,
                 quantity: 0,
-                id: 'purplet'
+                id: 'purplet',
+                img: require('../../images/purplet.jpg'),
             },
             black: {
                 name: 'ATL Hustle Black T-Shirt',
@@ -51,6 +55,7 @@ const allGear = {
                 price: 20,
                 quantity: 0,
                 id: 'blackt',
+                img: require('../../images/blackt.jpg'),
             },
             gray: {
                 name: 'ATL Hustle Gray T-Shirt',
@@ -59,6 +64,7 @@ const allGear = {
                 price: 20,
                 quantity: 0,
                 id: 'grayt',
+                img: require('../../images/grayt.jpg'),
             }
         },
         polo: {
@@ -68,13 +74,15 @@ const allGear = {
             price: 30,
             quantity: 0,
             id: 'polo',
+            img: require('../../images/polo.jpg'),
         },
         hat: {
             name: 'ATL Hustle 5 Panel Hat',
             color: 'black',
             price: 25,
             quantity: 0,
-            id: 'hat'
+            id: 'hat',
+            img: require('../../images/hat.jpg'),
         }
     },
     discs: {
@@ -82,28 +90,31 @@ const allGear = {
             name: 'ATL Hustle Game Disc',
             price: 15,
             quantity: 0,
-            id: 'gamedisc'
+            id: 'gamedisc',
+            img: require('../../images/gamedisc.jpg'),
         },
         futures: {
             name: 'Hustle Futures Disc',
             price: 15,
             quantity: 0,
-            id: 'futuresdisc'
+            id: 'futuresdisc',
+            img: require('../../images/futuresdisc.jpg'),
         },
         peach: {
             name: 'ATL Hustle Peach Disc',
             price: 15,
             quantity: 0,
             id: 'peachdisc',
+            img: require('../../images/peachdisc.jpg'),
         }
     }
 }
 
 const Gear = (props) => {
     return (
-        <div>
+        <div className='content'>
             <Link style={navStyle} to='/shop'>
-                <div>Back to Shop</div>
+                <div className='backToShop'>Back to Shop</div>
             </Link>
             <Jerseys increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             <Apparel increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
@@ -114,6 +125,10 @@ const Gear = (props) => {
 
 const Size = (props) => {
     const sizeSelect = (e) => {
+        let buttons = document.querySelectorAll(`.${props.item.id}.sizeBtn`);
+        buttons.forEach((button) => {
+            button.classList.remove('selectedSize');
+        })
         let button = document.querySelector(`#${e.target.id}`);
         button.classList.add('selectedSize');
         props.item.size = e.target.textContent;
@@ -122,9 +137,9 @@ const Size = (props) => {
     if (props.item.name === 'ATL Hustle 5 Panel Hat') return
     return (
         <div className='sizeSelector'>
-            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'S'} className='S sizeBtn'>S</button>
-            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'M'} className='M sizeBtn'>M</button>
-            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'L'} className='L sizeBtn'>L</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'S'} className={props.item.id + ' sizeBtn'}>S</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'M'} className={props.item.id + ' sizeBtn'}>M</button>
+            <button onClick={(e) => {sizeSelect(e)}} id={props.item.id + 'L'} className={props.item.id + ' sizeBtn'}>L</button>
         </div>
     )
 }
@@ -147,14 +162,16 @@ const Jerseys = (props) => {
                 {jerseys.map(jersey => {
                     return (
                         <div key={jersey.id} className='shopItem'>
-                            <img className='shopImg' src={require(`../../images/${jersey.id}.jpg`)} alt={jersey.id}/>
+                            <img className='shopImg' src={jersey.img} alt={jersey.id}/>
+                            <div className='shopItemDivider'> </div>
                             <div className='itemName'>{jersey.name}</div>
                             <Size item={jersey}/>
                             <div className='quantity'>
                                 <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
-                                <input type='text' placeholder="Quantity" id={jersey.id} name={jersey.id} />
+                                <input className='quantityInput' type='text' placeholder="0" id={jersey.id} name={jersey.id} />
                                 <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
                             </div>
+                            <div className='itemPrice'>${jersey.price}</div>
                             <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
@@ -189,14 +206,16 @@ const Apparel = (props) => {
                 {apparel.map(item => {
                     return (
                         <div key={item.id} className='shopItem'>
-                            <img className='shopImg' src={require(`../../images/${item.id}.jpg`)} alt={item.id}/>
+                            <img className='shopImg' src={item.img} alt={item.id}/>
+                            <div className='shopItemDivider'> </div>
                             <div className='itemName'>{item.name}</div>
                             <Size item={item} />
                             <div className='quantity'>
                                 <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
-                                <input type='text' placeholder="Quantity" id={item.id} name={item.id} />
+                                <input className='quantityInput' type='text' placeholder="0" id={item.id} name={item.id} />
                                 <button onClick={() => {props.increment(item)}} className='increment'>+</button>
                             </div>
+                            <div className='itemPrice'>${item.price}</div>
                             <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
@@ -224,13 +243,15 @@ const Discs = (props) => {
                 {discs.map(disc => {
                     return (
                         <div key={disc.id} className='shopItem'>
-                            <img className='shopImg' src={require(`../../images/${disc.id}.jpg`)} alt={disc.id}/>
+                            <img className='shopImg' src={disc.img} alt={disc.id}/>
+                            <div className='shopItemDivider'> </div>
                             <div className='itemName'>{disc.name}</div>
                             <div className='quantity'>
                                 <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
-                                <input type='text' placeholder="Quantity" id={disc.id} name={disc.id} />
+                                <input className='quantityInput' type='text' placeholder="0" id={disc.id} name={disc.id} />
                                 <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
                             </div>
+                            <div className='itemPrice'>${disc.price}</div>
                             <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
@@ -242,3 +263,4 @@ const Discs = (props) => {
 
 export default Gear;
 export { allGear };
+export { Size };

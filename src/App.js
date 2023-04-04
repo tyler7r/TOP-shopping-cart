@@ -33,6 +33,7 @@ const App = () => {
     const addItem = (item) => {
         const input = document.querySelector(`#${item.id}`);
         if (isNaN(parseInt(input.value)) === true) return;
+        if (input.value === '0') return;
         let find = cart.find((obj) => obj.id === item.id);
         if (item.size) {
             sizeHandler(item);
@@ -64,6 +65,7 @@ const App = () => {
             setCart(copy);
         } else {
             itemCopy.quantity += parseInt(input.value);
+            console.log()
             let copy = [...cart, itemCopy]
             setCart(copy);
         }
@@ -75,22 +77,24 @@ const App = () => {
         const input = document.querySelector(`#${item.id}`);
         input.value++;
         if (cartView === true) {
+            input.textContent++
             let copy = [...cart];
-            item.quantity = input.value;
+            item.quantity = input.textContent;
             setCart(copy);
         }
     }
 
     const decrement = (item, cartView = false) => {
         const input = document.querySelector(`#${item.id}`);
-        if (input.value === '0') return
+        if (input.value === '0' || input.value === '') return;
         input.value--;
         if (cartView === true) {
-            if (input.value === '0') {
+            if (input.textContent === '0') {
                 deleteItem(item);
             } else {
+                input.textContent--;
                 let copy = [...cart];
-                item.quantity = input.value;
+                item.quantity = input.textContent;
                 setCart(copy);
             }
         }
@@ -117,7 +121,7 @@ const App = () => {
                 <Nav quantity={quantity} cart={cart} />
                 <Routes>
                     <Route path='/' element={<Home addItem={addItem} />} />
-                    <Route path='/shop' element={<Shop addItem={addItem}/>} />
+                    <Route path='/shop' element={<Shop increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/cart' element={<Cart delete={deleteItem} price={price} cart={cart} increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/tickets' element={<Tickets increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/gear' element={<Gear increment={increment} decrement={decrement} addItem={addItem}/>} />
