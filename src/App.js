@@ -55,6 +55,10 @@ const App = () => {
     }
 
     const sizeHandler = (item) => {
+        let buttons = document.querySelectorAll(`.${item.id}.sizeBtn`);
+        buttons.forEach((button) => {
+            button.classList.remove('selectedSize');
+        })
         let itemCopy = {...item};
         const input = document.querySelector(`#${item.id}`);
         let sizeMatch = cart.find(obj => obj.id === itemCopy.id && obj.size === itemCopy.size)

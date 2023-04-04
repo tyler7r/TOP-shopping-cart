@@ -5,20 +5,23 @@ import { allTickets } from './ShopComponents/Tickets';
 import { Size } from './ShopComponents/Gear';
 
 const navStyle = {
-    color: 'black',
-    textDecoration: 'none'
+    color: '#2f1147',
+    textDecoration: 'none',
+    listStyle: 'none',
+    width: 'fit-content',
+    display: 'flex',
 } 
 
 const Shop = (props) => {
     return (
             <div className='content'>
-                <div className='shop-nav'>
-                    <ul>
+                <div>
+                    <ul className='shop-nav'>
                         <Link style={navStyle} to='/tickets'>
-                            <li>Shop All Tickets</li>
+                            <li className='shopLink'>Shop All Tickets</li>
                         </Link>
                         <Link style={navStyle} to='/gear'>
-                            <li>Shop All Gear</li>
+                            <li className='shopLink'>Shop All Gear</li>
                         </Link>
                     </ul>
                 </div>
@@ -73,7 +76,7 @@ const Featured = (props) => {
                     <img className='shopImg' src={props.item.img} alt={props.item.id}/>
                     <div className='shopItemDivider'> </div>
                     <div className='itemName'>
-                        <div>{props.item.date} vs. {props.item.name}</div>
+                        <div>{props.item.date} | {props.item.name}</div>
                     </div>
                     <div className='quantity'>
                         <button onClick={() => {props.decrement(props.item)}} className='decrement'>-</button>

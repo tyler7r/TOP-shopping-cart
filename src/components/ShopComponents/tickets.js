@@ -5,7 +5,7 @@ import { navStyle } from "../Shop"
 const allTickets = {
     indy429: {
         name: 'Indianopolis Alley Cats',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         date: 'April 29th',
         price: 10,
         quantity: 0,
@@ -14,7 +14,7 @@ const allTickets = {
     },
     car505: {
         name: 'Carolina Flyers',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         date: 'May 5th',
         price: 15,
         quantity: 0,
@@ -23,7 +23,7 @@ const allTickets = {
     },
     aus512: {
         name: 'Austin Sol',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         date: 'May 12th',
         quantity: 0,
         price: 15,
@@ -32,7 +32,7 @@ const allTickets = {
     },
     hou527: {
         name: 'Houston Havoc',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         date: 'May 27th',
         quantity: 0,
         price: 10,
@@ -42,7 +42,7 @@ const allTickets = {
     dal617: {
         name: 'Dallas Legion',
         date: 'June 17th',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         price: 10,
         quantity: 0,
         id: 'dal617',
@@ -50,7 +50,7 @@ const allTickets = {
     },
     car722: {
         name: 'Carolina Flyers',
-        type: 'Individual',
+        type: 'Single Game Ticket',
         date: 'July 22nd',
         price: 15,
         quantity: 0,
@@ -59,7 +59,7 @@ const allTickets = {
     },
     ambassador: {
         name: '2023 Ambassador Pass',
-        type: 'Season',
+        type: 'Season Ticket',
         price: 130,
         quantity: 0,
         id: 'ambassador',
@@ -73,7 +73,7 @@ const allTickets = {
     },
     family: {
         name: '2023 Family Pass',
-        type: 'Season',
+        type: 'Season Ticket',
         price: 199,
         quantity: 0,
         id: 'family',
@@ -87,7 +87,7 @@ const allTickets = {
     },
     buddy: {
         name: '2023 Buddy Pass',
-        type: 'Season',
+        type: 'Season Ticket',
         price: 149,
         quantity: 0,
         id: 'buddy',
@@ -128,7 +128,7 @@ const IndividualTickets = (props) => {
 
     const individual = () => {
         for (let ticket in allTickets) {
-            if (allTickets[ticket].type === 'Individual') {
+            if (allTickets[ticket].type === 'Single Game Ticket') {
                 tickets.push(allTickets[ticket]);
             }
         }
@@ -163,7 +163,7 @@ const SeasonTickets = (props) => {
     
     const season = () => {
         for (let ticket in allTickets) {
-            if (allTickets[ticket].type === 'Season') {
+            if (allTickets[ticket].type === 'Season Ticket') {
                 tickets.push(allTickets[ticket]);
             }
         }
