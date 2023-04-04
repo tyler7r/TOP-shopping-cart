@@ -104,8 +104,8 @@ const allTickets = {
 const Tickets = (props) => {
     return (
         <div className='content'>
-            <Link style={navStyle} to='/shop'>
-                    <div className='backToShop'>Back to Shop</div>
+            <Link style={navStyle} to='/'>
+                    <div className='backToShop'>Back to Home</div>
             </Link>
             <div id='individualTickets'>
                 <h1 className='sectionTitle'>Individual Tickets</h1>

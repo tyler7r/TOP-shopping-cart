@@ -113,8 +113,8 @@ const allGear = {
 const Gear = (props) => {
     return (
         <div className='content'>
-            <Link style={navStyle} to='/shop'>
-                <div className='backToShop'>Back to Shop</div>
+            <Link style={navStyle} to='/'>
+                <div className='backToShop'>Back to Home</div>
             </Link>
             <Jerseys increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>
             <Apparel increment={props.increment} decrement={props.decrement} addItem={props.addItem}/>

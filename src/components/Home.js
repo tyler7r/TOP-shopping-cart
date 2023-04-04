@@ -1,7 +1,7 @@
 const Home = (props) => {
     return (
         <div className='content'>
-            <h1>Home Page</h1>
+            <img id='homeLogo' alt='homeLogo' src={require('../images/logo.png')} />
         </div>
     )
 }

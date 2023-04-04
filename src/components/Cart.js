@@ -24,13 +24,25 @@ const Cart = (props) => {
 
     console.log(props.cart);
     if (props.price === 0 || props.cart.length === 0) {
-        return <div id='emptyCartMsg'>Your Cart is Empty</div>
+        return (
+            <div className="content">
+                <Link style={navStyle} to='/'>
+                    <div className='backToShop'>Back to Home</div>
+                </Link>
+                <div className="emptyCartContent">
+                    <div id='emptyCartMsg'>Your Cart is Coming Up Empty</div>
+                    <video id='highlight1' width='600' height='300' autoPlay={true} controls='controls' src={require('../images/highlight1.mov')} />
+                    <video id='highlight2' width='600' height='300' controls='controls' src={require('../images/highlight2.mov')} />
+                    <div id='troll'>Just like these throws</div>
+                </div>
+            </div>
+        )
     }
 
     return (
         <div className='content cart'>
             <div className='cartItems'>
-                <Link style={navStyle} to='/shop'>
+                <Link style={navStyle} to='/'>
                     <div id='continueShopping'>Continue Shopping</div>
                 </Link>
                 {props.cart.map(item => {

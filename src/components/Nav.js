@@ -15,8 +15,11 @@ const Nav = (props) => {
                 <Link style={navStyle} to='/'>
                     <li>Home</li>
                 </Link>
-                <Link style={navStyle} to='/shop'>
-                    <li>Shop</li>
+                <Link style={navStyle} to='/tickets'>
+                    <li>Tickets</li>
+                </Link>
+                <Link style = {navStyle} to='/gear'>
+                    <li>Gear</li>
                 </Link>
                 <Link style={navStyle} to='/cart'>
                     <li>Cart: {props.cart.length}</li>

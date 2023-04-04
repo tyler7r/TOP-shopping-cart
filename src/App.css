@@ -7,6 +7,7 @@
     margin-top: 4px;
     background-color: lightgray;
     padding: 8px;
+    min-height: 100vh;
 }
 
 #main-nav {
@@ -17,6 +18,7 @@
     color: white;
     padding: 4px 24px 4px 24px;
     margin-bottom: 4px;
+    font-weight: bold;
 }
 
 #logo {
@@ -35,9 +37,9 @@
 }
 
 .shop-nav {
-    flex-direction: column;
+    display: flex;
     justify-content: space-between;
-    margin-left: 16px;
+    margin: 0px 16px 0px 16px;
     gap: 4px;
 }
 
@@ -272,7 +274,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 10fr;
     left: auto;
-    gap: 8px;
+    gap: 4px;
+    column-gap: 8px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -289,6 +292,7 @@
     font-size: 36px;
     color: #2f1147;
     -webkit-text-stroke: 1px #2f1147;
+    align-self: center;
 }
 
 .featuredTicketTitle {
@@ -308,6 +312,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 4px;
 }
 
 .featuredTickets, .featuredGearSection {
@@ -535,4 +540,26 @@
 
 .hidden {
     display: none;
+}
+
+.emptyCartContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#troll {
+    font-weight: bold;
+    color: #2f1147;
+    font-size: 24px;
+}
+
+#emptyCartMsg {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 54px;
+    color: #2f1147;
 }

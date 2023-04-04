@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import './App.css'
 import Nav from './components/Nav';
-import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
 import Tickets from './components/ShopComponents/Tickets'
@@ -93,7 +92,7 @@ const App = () => {
         if (input.value === '0' || input.value === '') return;
         input.value--;
         if (cartView === true) {
-            if (input.textContent === '0') {
+            if (item.quantity === '1') {
                 deleteItem(item);
             } else {
                 input.textContent--;
@@ -124,8 +123,7 @@ const App = () => {
             <div className='App'>
                 <Nav quantity={quantity} cart={cart} />
                 <Routes>
-                    <Route path='/' element={<Home addItem={addItem} />} />
-                    <Route path='/shop' element={<Shop increment={increment} decrement={decrement} addItem={addItem}/>} />
+                    <Route path='/' element={<Shop increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/cart' element={<Cart delete={deleteItem} price={price} cart={cart} increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/tickets' element={<Tickets increment={increment} decrement={decrement} addItem={addItem}/>} />
                     <Route path='/gear' element={<Gear increment={increment} decrement={decrement} addItem={addItem}/>} />
