@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/TOP-shopping-cart/static/css/main.2a739517.css",
+    "main.js": "/TOP-shopping-cart/static/js/main.136c1ec8.js",
+    "static/js/787.bcb5ed4a.chunk.js": "/TOP-shopping-cart/static/js/787.bcb5ed4a.chunk.js",
+    "static/media/highlight1.mov": "/TOP-shopping-cart/static/media/highlight1.ac1c368a0be04b381d9b.mov",
+    "static/media/highlight2.mov": "/TOP-shopping-cart/static/media/highlight2.a9c19e20846095e45bbb.mov",
+    "static/media/sunhoodie.jpg": "/TOP-shopping-cart/static/media/sunhoodie.5cf72e6e8074b50eec71.jpg",
+    "static/media/buddy.jpg": "/TOP-shopping-cart/static/media/buddy.cd929342c8f0cb64e63a.jpg",
+    "static/media/awaykit.jpg": "/TOP-shopping-cart/static/media/awaykit.39bdd36defafc79ffd84.jpg",
+    "static/media/ambassador.jpg": "/TOP-shopping-cart/static/media/ambassador.83e80c7ce45103f2adca.jpg",
+    "static/media/family.jpg": "/TOP-shopping-cart/static/media/family.03fef097f287270618cb.jpg",
+    "static/media/homekit.jpg": "/TOP-shopping-cart/static/media/homekit.1e0021864fbe7ba2ca94.jpg",
+    "static/media/car505.jpg": "/TOP-shopping-cart/static/media/car505.c2bd9134c06a79ac4eb3.jpg",
+    "static/media/aus512.jpg": "/TOP-shopping-cart/static/media/aus512.e94d6534ad78031582fe.jpg",
+    "static/media/dal617.jpg": "/TOP-shopping-cart/static/media/dal617.5e619589bd060b20fdf4.jpg",
+    "static/media/car722.jpg": "/TOP-shopping-cart/static/media/car722.4f58f67eda40ce0df4b9.jpg",
+    "static/media/hou527.jpg": "/TOP-shopping-cart/static/media/hou527.719ee79c884af41cc05d.jpg",
+    "static/media/indy429.jpg": "/TOP-shopping-cart/static/media/indy429.51fe03d1381d108322f0.jpg",
+    "static/media/grayt.jpg": "/TOP-shopping-cart/static/media/grayt.5654378e2156a67103ed.jpg",
+    "static/media/futuresdisc.jpg": "/TOP-shopping-cart/static/media/futuresdisc.e1b34c44808c9d1b20f5.jpg",
+    "static/media/american-express.png": "/TOP-shopping-cart/static/media/american-express.d4f6910aaae152e28555.png",
+    "static/media/peachdisc.jpg": "/TOP-shopping-cart/static/media/peachdisc.e002e8e912e4aad65f77.jpg",
+    "static/media/purplet.jpg": "/TOP-shopping-cart/static/media/purplet.fa1fe50cc441e9c0d259.jpg",
+    "static/media/blackt.jpg": "/TOP-shopping-cart/static/media/blackt.e50c8ff1da8f171cb66e.jpg",
+    "static/media/polo.jpg": "/TOP-shopping-cart/static/media/polo.b476d407364fbdf77a81.jpg",
+    "static/media/hat.jpg": "/TOP-shopping-cart/static/media/hat.46c6f38ef0d185629bd2.jpg",
+    "static/media/logo.png": "/TOP-shopping-cart/static/media/logo.de6c213e9020232604f1.png",
+    "static/media/gamedisc.jpg": "/TOP-shopping-cart/static/media/gamedisc.5263855154af87d9c499.jpg",
+    "index.html": "/TOP-shopping-cart/index.html",
+    "main.2a739517.css.map": "/TOP-shopping-cart/static/css/main.2a739517.css.map",
+    "main.136c1ec8.js.map": "/TOP-shopping-cart/static/js/main.136c1ec8.js.map",
+    "787.bcb5ed4a.chunk.js.map": "/TOP-shopping-cart/static/js/787.bcb5ed4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2a739517.css",
+    "static/js/main.136c1ec8.js"
+  ]
+}
