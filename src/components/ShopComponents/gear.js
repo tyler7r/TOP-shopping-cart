@@ -161,18 +161,20 @@ const Jerseys = (props) => {
             <div className='jerseys'>
                 {jerseys.map(jersey => {
                     return (
-                        <div key={jersey.id} className='shopItem'>
-                            <img className='shopImg' src={jersey.img} alt={jersey.id}/>
-                            <div className='shopItemDivider'> </div>
-                            <div className='itemName'>{jersey.name}</div>
-                            <Size item={jersey}/>
-                            <div className='quantity'>
-                                <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
-                                <input className='quantityInput' type='text' placeholder="0" id={jersey.id} name={jersey.id} />
-                                <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
+                        <div key={jersey.id} className="shopItemDblBorder">
+                            <div key={jersey.id} className='shopItem'>
+                                <img className='shopImg' src={jersey.img} alt={jersey.id}/>
+                                <div className='shopItemDivider'> </div>
+                                <div className='itemName'>{jersey.name}</div>
+                                <Size item={jersey}/>
+                                <div className='quantity'>
+                                    <button onClick={() => {props.decrement(jersey)}} className='decrement'>-</button>
+                                    <input className='quantityInput' type='text' placeholder="0" id={jersey.id} name={jersey.id} />
+                                    <button onClick={() => {props.increment(jersey)}} className='increment'>+</button>
+                                </div>
+                                <div className='itemPrice'>${jersey.price}</div>
+                                <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                             </div>
-                            <div className='itemPrice'>${jersey.price}</div>
-                            <button onClick={() => {props.addItem(jersey)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
                 })}
@@ -205,18 +207,20 @@ const Apparel = (props) => {
             <div className='apparel'>
                 {apparel.map(item => {
                     return (
-                        <div key={item.id} className='shopItem'>
-                            <img className='shopImg' src={item.img} alt={item.id}/>
-                            <div className='shopItemDivider'> </div>
-                            <div className='itemName'>{item.name}</div>
-                            <Size item={item} />
-                            <div className='quantity'>
-                                <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
-                                <input className='quantityInput' type='text' placeholder="0" id={item.id} name={item.id} />
-                                <button onClick={() => {props.increment(item)}} className='increment'>+</button>
+                        <div key={item.id} className="shopItemDblBorder">
+                            <div key={item.id} className='shopItem'>
+                                <img className='shopImg' src={item.img} alt={item.id}/>
+                                <div className='shopItemDivider'> </div>
+                                <div className='itemName'>{item.name}</div>
+                                <Size item={item} />
+                                <div className='quantity'>
+                                    <button onClick={() => {props.decrement(item)}} className='decrement'>-</button>
+                                    <input className='quantityInput' type='text' placeholder="0" id={item.id} name={item.id} />
+                                    <button onClick={() => {props.increment(item)}} className='increment'>+</button>
+                                </div>
+                                <div className='itemPrice'>${item.price}</div>
+                                <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                             </div>
-                            <div className='itemPrice'>${item.price}</div>
-                            <button onClick={() => {props.addItem(item)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
                 })}
@@ -242,17 +246,19 @@ const Discs = (props) => {
             <div className='discs'>
                 {discs.map(disc => {
                     return (
-                        <div key={disc.id} className='shopItem'>
-                            <img className='shopImg' src={disc.img} alt={disc.id}/>
-                            <div className='shopItemDivider'> </div>
-                            <div className='itemName'>{disc.name}</div>
-                            <div className='quantity'>
-                                <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
-                                <input className='quantityInput' type='text' placeholder="0" id={disc.id} name={disc.id} />
-                                <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
+                        <div key={disc.id} className="shopItemDblBorder">
+                            <div key={disc.id} className='shopItem'>
+                                <img className='shopImg' src={disc.img} alt={disc.id}/>
+                                <div className='shopItemDivider'> </div>
+                                <div className='itemName'>{disc.name}</div>
+                                <div className='quantity'>
+                                    <button onClick={() => {props.decrement(disc)}} className='decrement'>-</button>
+                                    <input className='quantityInput' type='text' placeholder="0" id={disc.id} name={disc.id} />
+                                    <button onClick={() => {props.increment(disc)}} className='increment'>+</button>
+                                </div>
+                                <div className='itemPrice'>${disc.price}</div>
+                                <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                             </div>
-                            <div className='itemPrice'>${disc.price}</div>
-                            <button onClick={() => {props.addItem(disc)}} className='addToCart'>Add to Cart</button>
                         </div>
                     )
                 })}

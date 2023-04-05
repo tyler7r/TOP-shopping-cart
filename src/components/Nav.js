@@ -13,16 +13,16 @@ const Nav = (props) => {
             <img id='logo' alt='logo' src={logo}/>
             <ul className="nav-links">
                 <Link style={navStyle} to='/'>
-                    <li>Home</li>
+                    <li className='navLink'>Home</li>
                 </Link>
                 <Link style={navStyle} to='/tickets'>
-                    <li>Tickets</li>
+                    <li className='navLink'>Tickets</li>
                 </Link>
                 <Link style = {navStyle} to='/gear'>
-                    <li>Gear</li>
+                    <li className='navLink'>Gear</li>
                 </Link>
                 <Link style={navStyle} to='/cart'>
-                    <li>Cart: {props.cart.length}</li>
+                    <li className='navLink'>Cart: {props.cart.length}</li>
                 </Link>
             </ul>
         </nav>
